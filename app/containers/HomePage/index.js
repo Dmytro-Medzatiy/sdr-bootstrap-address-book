@@ -18,11 +18,10 @@ export default class HomePage extends React.Component { // eslint-disable-line r
   render() {
     return (
         <div>
-          <h1>Address Book</h1>
-          <h3>This is a place where you should place your components</h3>
-          <Sample />
+          <h1 style={{textAlign: "center", color: "#"}}>Chat</h1>
           <CommentBox />
         </div>
     );
   }
 }
+

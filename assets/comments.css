@@ -1,0 +1,19 @@
+body {
+    background-color: #fcf8e3;
+}
+
+.CommentBox {
+    border: solid 2px #000066;
+    border-radius: 10px;
+    padding-bottom: 2em;
+}
+
+input {
+    border: solid 1px blue;
+    border-radius: 3px;
+}
+
+.commentForm {
+   
+    text-align: center;
+}
