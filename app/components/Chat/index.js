@@ -53,11 +53,10 @@ class Chat extends React.Component {
     }
     
     onAddComment(newChatMessages) {
-        const newArr = this.state.data[this.state.currentChat];
-        newArr.messages = newChatMessages;
-        console.log(newArr);
-        //this.setState({data: );
-        
+        var newArr = _.cloneDeep(this.state.data);
+        newArr[this.state.currentChat].messages = newChatMessages;
+        this.setState({data: newArr});
+
     }
 
     onChatSwitch(id) {
