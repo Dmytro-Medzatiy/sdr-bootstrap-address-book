@@ -4,8 +4,8 @@ import CommentForm from 'components/CommentForm';
 
 
 var arr = [
-  {author: "Pete Hunt", text: "This is one comment"},
-  {author: "Jordan Walke", text: "This is *another* comment"}
+  { author: "Pete Hunt", text: "This is one comment"},
+  { author: "Jordan Walke", text: "This is *another* comment"}
 ];
 
 class CommentBox extends Component {
@@ -14,13 +14,15 @@ class CommentBox extends Component {
     super(props);
     this.state = {
                   data: arr
+
                   };
     this.onNewComment = this.onNewComment.bind(this);
   }
 
   onNewComment(author,text) {
 
-    const newComment = { author: author,
+    const newComment = {
+                          author: author,
                           text: text};
     const newData = this.state.data.concat(newComment);
     this.setState({data: newData});

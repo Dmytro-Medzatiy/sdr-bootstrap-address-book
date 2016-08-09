@@ -45,6 +45,7 @@ class CommentForm extends Component {
           value={this.state.author}
           onChange={this.handleAuthorChange}
           style={{marginRight: "1em"}}
+
         />
         <input
           type="text"
