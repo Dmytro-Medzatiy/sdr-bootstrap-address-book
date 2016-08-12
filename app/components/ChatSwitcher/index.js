@@ -3,11 +3,18 @@
  */
 
 import React from 'react';
+import CreateChatForm from 'components/CreateChatForm';
 
 export default class ChatSwitcher extends React.Component {
     constructor(props){
         super(props);
         this.handleOnClick = this.handleOnClick.bind(this);
+        this.onCreateNewChannel = this.onCreateNewChannel.bind(this);
+        this.checkName = this.checkName.bind(this);
+    }
+
+    onCreateNewChannel() {
+        console.log('Let\'s create the new Channel');
     }
 
     handleOnClick(e) {
@@ -16,8 +23,18 @@ export default class ChatSwitcher extends React.Component {
 
     }
 
+    checkName(newName) {
+        const { chatList } = this.props;
+        if (chatList.map((x) => { return (x.name.toUpperCase())}).indexOf(newName.toUpperCase()) >= 0 ) {
+            return (false);
+        }
+        else {
+            return (true);
+        }
+    }
+
     render() {
-        const {currentChat, chatList, onChatSwitch} = this.props;
+        const { currentChat, chatList } = this.props;
 
         const chats = chatList.map((chat) => {
             if (chat.chatId==currentChat) {
@@ -35,22 +52,14 @@ export default class ChatSwitcher extends React.Component {
                 )
             }
         });
-
-        const value = chatList.find((chat) => {
-            if (currentChat == chat.chatId) {
-                return chat.name;
-            }
-        });
-
-        const headerStyle = {
-          backgroundColor:'#4d394b',
-          color:'#fcfcfc',
-          marginBottom:'0px'
+        const chatBoxStyle = {
+            overflow: 'auto',
+            border: '1px solid #ccc',
+            marginBottom: '20px'
         };
-        const selectStyle = {
-          borderRadius: '0px'
-        };
+        
         return (
+
             <div className="panel panel-primary">
                 <div className="panel-heading">
                     <h3 className="panel-title">Chose a channel</h3>
@@ -58,6 +67,12 @@ export default class ChatSwitcher extends React.Component {
                 <div className="panel-body">
                     <div className="btn-group">
                         {chats}
+                    </div>
+                    <div style={{textAlign:"center", margin: "0px", padding: "0px"}}>
+                         <h4>or</h4>
+                    </div>
+                    <div className="commentForm">                    
+                        <CreateChatForm checkNewChatName={this.checkName} onCreateNewChat={this.props.onCreateNewChat} />
                     </div>
                 </div>
             </div>
@@ -68,17 +83,3 @@ export default class ChatSwitcher extends React.Component {
 }
 
 
-/*<div className="form-group">
-    <div>
-        <h2 className="text-center text-uppercase"
-            style={headerStyle}>
-            Select channel
-        </h2>
-        <select defaultValue={value.name}
-                className="form-control"
-                onChange={onChatSwitch}
-                style={selectStyle}>
-            {chats}
-        </select>
-    </div>
-</div>*/

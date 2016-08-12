@@ -27,17 +27,18 @@ export default class CommentForm extends Component {
       color:'white',
       borderColor:'white'
     }
+    
     return (
-      <form className="commentForm" onSubmit={this.handleSubmit} >
-        <div className="input-group">
-          <Input ref="inputForAuthor" placeholder="Your name" type="text" className="form-control" />
-          <span className="input-group-addon" style={styleSpan}>&</span>
-          <Input ref="inputForText" placeholder="Say something..." type="text" className="form-control" />
+        <form className="commentForm" onSubmit={this.handleSubmit}>
+            <div className="input-group">
+                <Input ref="inputForAuthor" placeholder="Your name" type="text" className="form-control"/>
+                <span className="input-group-addon" style={styleSpan}>&</span>
+                <Input ref="inputForText" placeholder="Say something..." type="text" className="form-control"/>
           <span className="input-group-addon" style={styleSpan}>
-            <Input type="submit" value="Post" />
+            <Input type="submit" value="Post"/>
           </span>
-        </div>
-      </form>
+            </div>
+        </form>
     );
   }
 

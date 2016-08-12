@@ -76,16 +76,12 @@ export default class CommentBox extends Component {
 
     render() {
         const chatBoxStyle = {
-            height: 400,
+            height: 250,
             overflow: 'auto',
             border: '1px solid #ccc',
             marginBottom: '20px'
         };
-        const headerStyle = {
-            backgroundColor: '#4d394b',
-            color: '#fcfcfc',
-            marginBottom: '0px'
-        };
+        
         const {data, editableComment} = this.state;
         const {chatName} = this.props;
         return (

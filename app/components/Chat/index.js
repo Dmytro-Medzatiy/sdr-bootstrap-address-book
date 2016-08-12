@@ -6,6 +6,7 @@ import React from 'react';
 import CommentBox from 'components/CommentBox';
 import ChatSwitcher from 'components/ChatSwitcher';
 
+
 const arr = [
     {id: 1, author: "Pete Hunt", text: "This is one comment"},
     {id: 2, author: "Jordan Walke", text: "This is *another* comment"},
@@ -47,6 +48,8 @@ export default class Chat extends React.Component {
             currentChat: 0,
             data: chats
         };
+        this.onChatSwitch = this.onChatSwitch.bind(this);
+        this.onCreateNewChat = this.onCreateNewChat.bind(this);
     }
 
     onChatSwitch = (newChatId) => {
@@ -67,6 +70,22 @@ export default class Chat extends React.Component {
         });
     }
 
+    onCreateNewChat(name) {
+        const newChat = {
+            chatId: this.state.data.map((x) => {
+                                                    return (x.chatId)
+                                                }
+                                        ).length,
+            name: name,
+            messages: [{
+                id: 1,
+                author: "Let's talk!",
+                text: ""
+            }]
+        };
+        this.setState({data: this.state.data.concat(newChat)});
+    }
+
     render() {
       const {currentChat, data} = this.state;
       return (
@@ -74,11 +93,13 @@ export default class Chat extends React.Component {
               <div className="row">
                   <div className="col-lg-2 col-md-2"></div>
                   <div className="col-lg-8 col-md-8">
+
                       <ChatSwitcher currentChat={currentChat}
                                     chatList={data.map((chat) => {
                                           return {chatId: chat.chatId, name: chat.name}
                                         })}
                                     onChatSwitch={this.onChatSwitch}
+                                    onCreateNewChat={this.onCreateNewChat}
                       />
                       <div className="col-lg-2 col-md-2"></div>
                   </div>
